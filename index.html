@@ -18,6 +18,46 @@
       background: #f5f7fa;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .stagger-anim {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .stagger-anim.appear {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     header {
@@ -133,7 +173,7 @@
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header class="fade-in">
     <h1>Orbit Engineering Group</h1>
     <nav>
       <a href="#services">Services</a>
@@ -143,7 +183,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero fade-in">
     <h2>Engineering Smart Automation Solutions</h2>
     <p>
       We deliver industrial automation, SCADA, PLC, IoT and engineering solutions
@@ -152,7 +192,7 @@
   </section>
 
   <!-- SERVICES -->
-  <section class="section" id="services">
+  <section class="section fade-in" id="services">
     <h3>Our Services</h3>
     <div class="cards">
       <div class="card">
@@ -175,7 +215,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="section" id="about">
+  <section class="section fade-in" id="about">
     <h3>About Us</h3>
     <div class="about">
       <p>
@@ -192,7 +232,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section contact" id="contact">
+  <section class="section contact fade-in" id="contact">
     <h3>Contact Us</h3>
     <p>Email: info@orbitengineerings.com</p>
     <p>Phone: +91 70241 28029</p>
@@ -200,9 +240,70 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="fade-in">
     © 2025 Orbit Engineering Group. All Rights Reserved.
   </footer>
+
+  <!-- Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate header
+      const header = document.querySelector('header');
+      if (header) {
+        setTimeout(() => {
+          header.classList.add('fade-in', 'appear');
+        }, 100);
+      }
+      
+      // Animate hero section
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        setTimeout(() => {
+          hero.classList.add('fade-in', 'appear');
+        }, 300);
+      }
+      
+      // Animate services section
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        setTimeout(() => {
+          servicesSection.classList.add('fade-in', 'appear');
+        }, 500);
+      }
+      
+      // Animate service cards with stagger effect
+      const serviceCards = document.querySelectorAll('#services .card');
+      serviceCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('stagger-anim', 'appear');
+        }, 700 + (index * 150));
+      });
+      
+      // Animate about section
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        setTimeout(() => {
+          aboutSection.classList.add('fade-in', 'appear', 'delay-1');
+        }, 900);
+      }
+      
+      // Animate contact section
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        setTimeout(() => {
+          contactSection.classList.add('fade-in', 'appear', 'delay-2');
+        }, 1100);
+      }
+      
+      // Animate footer
+      const footer = document.querySelector('footer');
+      if (footer) {
+        setTimeout(() => {
+          footer.classList.add('fade-in', 'appear', 'delay-3');
+        }, 1300);
+      }
+    });
+  </script>
 
 </body>
 </html>
